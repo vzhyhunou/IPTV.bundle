@@ -60,7 +60,10 @@ def LoadGuide():
                                 try:
                                     key = unicode(name.text, errors = 'replace')
                                 except TypeError:
-                                    key = name.text.decode('utf-8')
+                                    try:
+                                        key = name.text.decode('utf-8')
+                                    except AttributeError:
+                                        pass
                                 if key:
                                     channels[key] = id
                             icon_elem = channel_elem.find('icon')
